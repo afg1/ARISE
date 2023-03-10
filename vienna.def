@@ -3,6 +3,7 @@ From: python:3.9.16-slim-bullseye
 
 %post
     apt update && apt install -y gcc g++ make
+    apt clean
 
     pip install biopython ViennaRNA polars
     pip cache purge
