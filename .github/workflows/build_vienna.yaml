@@ -4,6 +4,7 @@ on:
   push:
     paths:
       vienna.def
+jobs:
   create-vienna-rna:
     runs-on: ubuntu-latest
     permissions:
