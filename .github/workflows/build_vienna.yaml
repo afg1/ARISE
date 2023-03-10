@@ -1,0 +1,24 @@
+name: Create ViennaRNA singularity container
+
+on:
+  push:
+    paths:
+      vienna.def
+  create-vienna-rna:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    container:
+      image: quay.io/singularity/singularity:v3.11.0
+      options: --privileged
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: singularity build
+        run: singularity build vRNA.sif vienna.def
+
+      - name: "push to ghcr"
+        run: |
+          echo ${{ secrets.GITHUB_TOKEN }} | singularity remote login -u ${{ secrets.GHCR_USERNAME }} --password-stdin oras://ghcr.io
+          singularity push vRNA.sif oras://ghcr.io/${{ secrets.GHCR_USERNAME }}/viennaRNA:latest
