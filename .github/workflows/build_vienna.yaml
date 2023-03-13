@@ -22,4 +22,4 @@ jobs:
       - name: "push to ghcr"
         run: |
           echo ${{ secrets.GITHUB_TOKEN }} | singularity remote login -u ${{ secrets.GHCR_USERNAME }} --password-stdin oras://ghcr.io
-          singularity push vRNA.sif oras://ghcr.io/${{ secrets.GHCR_USERNAME }}/ARISE:vrna
+          singularity push vRNA.sif oras://ghcr.io/afg1/ARISE:vrna
