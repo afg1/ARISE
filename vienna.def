@@ -5,5 +5,5 @@ From: python:3.9.16-slim-bullseye
     apt update && apt install -y gcc g++ make
     apt clean
 
-    pip install biopython ViennaRNA polars
+    pip install biopython ViennaRNA polars click
     pip cache purge
