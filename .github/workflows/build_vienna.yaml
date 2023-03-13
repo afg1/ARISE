@@ -14,7 +14,7 @@ jobs:
       options: --privileged --cap-add=ALL
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: singularity build
         run: singularity build vRNA.sif vienna.def
