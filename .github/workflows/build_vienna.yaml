@@ -11,7 +11,7 @@ jobs:
       packages: write
     container:
       image: quay.io/singularity/singularity:v3.8.4
-      options: --privileged
+      options: --privileged --cap-add=ALL
 
     steps:
       - uses: actions/checkout@v2
@@ -22,4 +22,4 @@ jobs:
       - name: "push to ghcr"
         run: |
           echo ${{ secrets.GITHUB_TOKEN }} | singularity remote login -u ${{ secrets.GHCR_USERNAME }} --password-stdin oras://ghcr.io
-          singularity push vRNA.sif oras://ghcr.io/${{ secrets.GHCR_USERNAME }}/viennaRNA:latest
+          singularity push vRNA.sif oras://ghcr.io/${{ secrets.GHCR_USERNAME }}/ARISE:vrna
