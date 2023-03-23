@@ -1,0 +1,25 @@
+name: Create ViennaRNA singularity container
+
+on:
+  push:
+    paths:
+      lang_modeling.def
+jobs:
+  create-vienna-rna:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    container:
+      image: quay.io/singularity/singularity:v3.8.4
+      options: --privileged --cap-add=ALL
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: singularity build
+        run: singularity build lang_modeling.sif lang_modeling.def
+
+      - name: "push to ghcr"
+        run: |
+          echo ${{ secrets.GITHUB_TOKEN }} | singularity remote login -u ${{ secrets.GHCR_USERNAME }} --password-stdin oras://ghcr.io
+          singularity push lang_modeling.sif oras://ghcr.io/afg1/arise:lang_modeling
