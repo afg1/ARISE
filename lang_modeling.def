@@ -1,0 +1,5 @@
+Bootstrap: docker
+From: huggingface/transformers-pytorch-gpu:latest
+
+%post
+    pip install click biopython
