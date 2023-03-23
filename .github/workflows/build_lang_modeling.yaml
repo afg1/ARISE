@@ -1,4 +1,4 @@
-name: Create ViennaRNA singularity container
+name: Create language modeling singularity container
 
 on:
   push:
