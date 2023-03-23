@@ -5,7 +5,7 @@ on:
     paths:
       lang_modeling.def
 jobs:
-  create-vienna-rna:
+  create-lang-modeling:
     runs-on: ubuntu-latest
     permissions:
       packages: write
