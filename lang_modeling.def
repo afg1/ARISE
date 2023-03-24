@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: huggingface/transformers-pytorch-gpu:latest
+From: python:3.9.16-slim-bullseye
 
 %post
-    pip install click biopython
+    pip install transformers torch click biopython
