@@ -2,4 +2,7 @@ Bootstrap: docker
 From: huggingface/transformers-pytorch-gpu:latest
 
 %post
+    # free up space on runner - maybe
+    sudo rm -rf /usr/share/dotnet
+    sudo rm -rf "$AGENT_TOOLSDIRECTORY"
     pip install click biopython
